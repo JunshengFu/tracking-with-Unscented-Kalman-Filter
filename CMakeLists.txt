@@ -1,7 +1,12 @@
-cmake_minimum_required(VERSION 3.7)
-project(ukf_generate_sigmaPoints)
+project(UnscentedKF)
 
-set(CMAKE_CXX_STANDARD 11)
+cmake_minimum_required (VERSION 3.5)
 
-set(SOURCE_FILES main.cpp ukf.cpp ukf.h)
-add_executable(ukf_generate_sigmaPoints ${SOURCE_FILES})
+add_definitions(-std=c++0x)
+
+set(sources
+   src/ukf.cpp
+   src/main.cpp
+   src/tools.cpp)
+
+add_executable(UnscentedKF ${sources})
