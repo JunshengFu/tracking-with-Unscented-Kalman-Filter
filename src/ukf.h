@@ -54,7 +54,7 @@ public:
   int n_aug_;
 
   // Number of sigma points
-  int n_aug_sigma;
+  int n_aug_sigma_;
 
   // Sigma point spreading parameter
   double lambda_;
@@ -76,6 +76,9 @@ public:
 
   // predicted sigma points matrix
   MatrixXd Xsig_pred_;
+
+  // augmented sigma points matrix
+  MatrixXd Xsig_aug_;
 
   /**
    * Constructor
@@ -113,12 +116,46 @@ public:
   void UpdateLidar(MeasurementPackage meas_package);
 
   /**
+   * Predict either lidar or radar measurement with given Sigma predictions
+   * @param n_z The measurement dimension
+   * @param Zsig The matrix for sigma points in measurement space
+   * @param z_pred The predicted measurement mean
+   * @param S The measurement covariance matrix
+   * @param R The measurement noise covariance matrix
+   */
+  void PredictMeasurement(int n_z, const MatrixXd &Zsig, VectorXd &z_pred, MatrixXd &S, MatrixXd &R) ;
+
+  /**
    * Updates the state and the state covariance matrix using a radar measurement
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
 
+  /**
+   * Updates the state with either lidar or radar measurement
+   * @param z The measurement at k+1
+   * @param z_pred The predictionof measurement at k+1
+   * @param S The measurement covariance matrix
+   * @param Zsig The matrix for sigma points in measurement space
+   */
+  void UpdateState(const VectorXd &z, const VectorXd &z_pred, const MatrixXd &S, const MatrixXd &Zsig);
 
+  /**
+   * Calculate augmented sigma points: Xsig_agu_
+   */
+  void AugmentSigmaPoints();
+
+
+  /**
+   * Predict the sigma points: Xsig_pred_
+   * @param delta_t Time between k and k+1 in s
+   */
+  void PredictSigmaPoints(double delta_t);
+
+  /**
+   * Predict Mean and Covariance of the predicted state: x_ and P_
+   */
+  void PredictMeanAndCovariance();
 };
 
 #endif /* UKF_H */
