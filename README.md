@@ -2,7 +2,7 @@
 
 ## Objective
 Utilize sensor data from both LIDAR and RADAR measurements for object (e.g. pedestrian, vehicles, or other moving objects) 
-tracking with the **Unscented Kalman Filter**.
+tracking with the Unscented Kalman Filter.
 
 
 ## Kalman Filters variances
