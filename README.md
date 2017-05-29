@@ -1,4 +1,4 @@
-# **Object Tracking with Unscented Kalman Filter**
+# **Object Tracking with Sensor Fusion-based Unscented Kalman Filter**
 
 ## Objective
 Utilize sensor data from both LIDAR and RADAR measurements for object (e.g. pedestrian, vehicles, or other moving objects) 
