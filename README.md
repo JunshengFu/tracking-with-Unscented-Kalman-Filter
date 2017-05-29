@@ -9,8 +9,7 @@ tracking with the Unscented Kalman Filter.
 
 All Kalman filters have the same mains steps: 1. Initialization, 2. Prediction, 3. Update.
 A **Standard Kalman Filter** (KF) can only handle linear equations. 
-Both the **Extended Kalman Filter** (EKF) and the **Unscented Kalman Filter** 
-(UKF will be disuccsed in the next project) allow you to use non-linear equations; the difference between 
+Both the **Extended Kalman Filter** (EKF) and the **Unscented Kalman Filter** allow you to use non-linear equations; the difference between 
 EKF and UKF is how they handle non-linear equations: Extended Kalman Filter uses the Jacobian matrix to 
 linearize non-linear functions; Unscented Kalman Filter, on the other hand, does not need to linearize non-linear 
 functions, insteadly, the unscented Kalman filter takes representative points from a Gaussian distribution. 
